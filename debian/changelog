@@ -1,3 +1,88 @@
+libosmocore (1.13.0) unstable; urgency=medium
+
+  [ Pau Espin Pedrol ]
+  * osmo-release.sh: Fix coloring output under bash
+  * socket: Introduce API osmo_sock_set_nonblock()
+  * cosmetic: io_uring: Fix typo in comment
+  * io_uring: RECVMSG_SENDMSG: Reset fd to blocking after osmo_fd_register() workaround
+  * cosmetic: logging.h: Fix whitespace
+  * gsmtap_util: Get rid of unused wq
+  * gsmtap_util: Fix fds not closed in ofd_wq_mode=0
+  * vty: assert in optional param followed by optional-multi-choice param: Fix [2/2]
+  * vty/test: Validate optional-multi-choice param followed by optional-multi-choice param
+  * gsmtap_util: Avoid sink_fd leak gsmtap_source_add_sinki() called multiple times
+  * logging_vty: Allow setting gsmtap log tgt as (blocking-io|nonblocking-io|wq)
+  * logging_vty: Set 'gsmtap log nonblocking-io' as default
+  * gsmtap_util: Set sink_fd RCVBUF and SNDBUF to minimum
+  * gsmtap_util: Set source_fd RCVBUF to minimum
+  * gsmtap_util: Increase source_fd's SO_SNDBUF to 4MB
+  * omo_io: poll: Support multiple iov on all read/write variants
+  * osmo_io: Validate msghdr!=NULL after allocation
+  * osmo_io: io_uring: Fix batch mode in multithread process
+  * vty: Fix extern var declared inside ifdef
+  * Add --disable-syslog-logging configure option
+  * osmo_io: Introduce API osmo_iofd_set_name_f()
+  * configure.ac: EMBEDDED modifies default AC_ARG_ENABLE values
+  * gmstap_log: optimization: Add talloc_pool for transmitted messages
+  * select.c: Check for ENABLE_PSEUDOTALLOC instead of EMBEDDED
+  * select.c: Check for ENABLE_PLUGIN instead of EMBEDDED
+  * contrib/jenkins_arm.sh: Remove explicit configure.sh disable args
+  * osmo_io: Make iofd_handle_segmented_read() static
+  * osmo_io: Reorder iofd_handle_segmented_read()
+  * osmo_io: Assert osmo_iofd_set_alloc_info() params fit in a 16bit value
+  * logging: Add APIs to set/get log_{target,context} fields
+  * gb: Avoid accessing struct log_target members directly
+  * Remove unused private API log_target_create_file_stream()
+  * osmo_io: Support rx of segments up to ~UINT16_MAX
+  * osmo_io: Propagate segment_cb errors to the read_cb
+  * osmo_io.h: Avoid including sys/socket.h
+  * socket.h: Include netinet/in.h instead of arpa/inet.h
+  * configure.ac: Add arpa/inet.h to AC_CHECK_HEADERS
+  * osmo_io: Add assert to validate inconditional
+  * socket_compat.h improvements to always have struct osmo_sockaddr available
+  * remove references to define EMBEDDED in public headers
+  * logging: Move log target file to its own file
+  * osmo_io: Fix misalignment of iofd->cmsg used as struct cmsghdr
+  * logging_file: Avoid reopening file for stderr
+  * logging_file: Fix log_target_file_switch_to_stream on stderr
+  * stats_tcp.c: Remove unneeded EMBEDDED check
+  * logging: Avoid infinite loop logging inside logging path
+  * Fix 'logging: Avoid infinite loop logging inside logging path'
+  * logging: Also Avoid infinite loop/deadlock in log_check_level()
+  * osmo_io: Introduce API osmo_iofd_get_txqueue_max_length()
+  * logging_file: Clean log_target_file_reopen()
+  * Implement log file target using osmo_io
+  * Use same queue length for gsmtap_log and gsmtap_file
+  * osmo_io: Remove outdated comment in API doc of osmo_iofd_set_io_buffers()
+  * osmo_io: Allow fetching maximum value allowed by osmo_iofd_set_io_buffers()
+  * logging_file: Request up to 8 iofd write buffers if available
+  * vty: Use osmo_fd_{write,read}_enable() API helper
+  * osmo_io: Move function declaration to internal header
+  * osmo_io_uring: Split global init from per-thread init
+  * osmo_io: Lazy-initialize during osmo_iofd_setup()
+  * logging: Support nonblocking-io for log target stderr & file, make it default
+
+  [ Mychaela N. Falconia ]
+  * gsm/protocol/gsm_48_103.h: add definition for TW-TS-007
+  * gsm/rsl: add definition for TFO transparent container IE
+
+  [ Vadim Yanitskiy ]
+  * vty: assert in optional param followed by optional-multi-choice param: Reproduce [1/2]
+
+  [ Timur Davydov ]
+  * Detect struct in6_addr.s6_addr32 via AC_CHECK_MEMBER and use HAVE_IN6_ADDR_S6_ADDR32 instead of __linux__.
+  * core: always build osmo_sock_multiaddr_* helpers
+  * core: fix printf format casts for struct timeval fields
+  * vty: guard definition of _XOPEN_SOURCE
+  * build: keep netns API public and gate features with HAVE_*
+  * core: remove SCTP include from osmo_io_internal.h
+  * core: guard TCP stats on availability of linux/tcp.h
+  * core: always build tun.c and gate TUN support by headers
+  * core: guard Linux netlink headers by libmnl usage
+  * Add Emscripten build support and JS callback logging backend
+
+ -- Pau Espin Pedrol <pespin@sysmocom.de>  Thu, 19 Feb 2026 12:39:15 +0100
+
 libosmocore (1.12.0) unstable; urgency=medium
 
   [ Vadim Yanitskiy ]
